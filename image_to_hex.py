@@ -19,7 +19,7 @@ def image_to_hex(filename):
     return hex_image
 
 
-def generate_intel_hex(converted_hex, start_at):
+def generate_intel_hex(image_hex, start_at):
     intel_hex_format = "%02X%04X00%s"
     results = []
 
