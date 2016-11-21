@@ -8,13 +8,13 @@ def image_to_hex(filename):
 
     for block_row in range(8):
         for col in range(128):
-            bitmap = ["0"] * 8
+            hex_image[col + block_row * 128] = 0
             for row in range(8):
                 y = 7 - row
                 rgb = im.getpixel((col, y + block_row * 8))
-                bitmap[row] = "0" if rgb == (255, 255, 255) else "1"
 
-            hex_image[col + block_row * 128] = int("".join(bitmap), 2)
+                if not rgb == (255, 255, 255):
+                    hex_image[col + block_row * 128] |= (1 << y)
 
     return hex_image
 
